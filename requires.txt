@@ -1,0 +1,5 @@
+torch==2.5.1+cu124
+OpenCV==4.10.0.84
+numpy==2.2.3
+pillow==11.0.0
+# LabelStudio==1.15.0
