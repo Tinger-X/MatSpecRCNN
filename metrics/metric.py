@@ -80,7 +80,7 @@ class ComprehensiveEvaluator:
             self._evaluate_detection(target, pred, ious)
 
             # 2. 实例分割评估
-            self._evaluate_segmentation(target, pred, ious)
+            self._evaluate_segmentation(target, pred)
 
             # 3. 材质分类评估
             self._evaluate_material(target, pred, ious)
@@ -145,7 +145,7 @@ class ComprehensiveEvaluator:
                 class_name = self.class_names[class_id]
                 self.detection_stats[class_name]["FP"] += 1
 
-    def _evaluate_segmentation(self, tgt, pred, ious):
+    def _evaluate_segmentation(self, tgt, pred):
         """评估实例分割性能"""
         matched_preds = set()
 
@@ -185,7 +185,8 @@ class ComprehensiveEvaluator:
                 class_name = self.class_names[class_id]
                 self.segmentation_stats[class_name]["FP"] += 1
 
-    def _compute_mask_iou(self, mask1, mask2):
+    @staticmethod
+    def _compute_mask_iou(mask1, mask2):
         """计算两个掩码之间的IoU"""
         # 确保是二值掩码
         mask1 = (mask1 > 0.5).float()
@@ -241,9 +242,6 @@ class ComprehensiveEvaluator:
 
         # 计算匹配框对之间的IoU改进
         for t_idx, p_idx in matched_pairs:
-            gt_box = tgt["boxes"][t_idx]
-            pred_box = pred["boxes"][p_idx]
-
             # 计算原始IoU
             original_iou = ious[t_idx, p_idx]
 
@@ -258,9 +256,9 @@ class ComprehensiveEvaluator:
         """汇总所有指标"""
         results = {
             # 1. 目标检测指标
-            "detection": self._calculate_metrics(self.detection_stats, "Detection"),
+            "detection": self._calculate_metrics(self.detection_stats),
             # 2. 实例分割指标
-            "segmentation": self._calculate_metrics(self.segmentation_stats, "Segmentation")
+            "segmentation": self._calculate_metrics(self.segmentation_stats)
         }
 
         # 3. 材质分类指标
@@ -302,9 +300,8 @@ class ComprehensiveEvaluator:
 
         return results
 
-    def _calculate_metrics(self, stats_dict, metric_type):
+    def _calculate_metrics(self, stats_dict):
         """计算精度、召回率、F1分数和mAP"""
-        metrics = {}
         class_metrics = {}
         total_TP, total_FP, total_FN = 0, 0, 0
 

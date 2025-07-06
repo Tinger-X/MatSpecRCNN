@@ -1,10 +1,10 @@
 import torch
 from torch import nn, Tensor
-import torch.nn.functional as F
-from torchvision.models.detection import _utils as det_utils
+import torch.nn.functional as F  # noqa
+from torchvision.models.detection import _utils as det_utils  # noqa
 from torchvision.ops import boxes as box_ops, roi_align, MultiScaleRoIAlign
-from torchvision.models.detection.faster_rcnn import TwoMLPHead, FastRCNNPredictor
-from torchvision.models.detection.mask_rcnn import MaskRCNNHeads, MaskRCNNPredictor
+from torchvision.models.detection.faster_rcnn import TwoMLPHead, FastRCNNPredictor  # noqa
+from torchvision.models.detection.mask_rcnn import MaskRCNNHeads, MaskRCNNPredictor  # noqa
 
 from .material import MaterialRoIPool, MaterialHead, MaterialPredictor
 

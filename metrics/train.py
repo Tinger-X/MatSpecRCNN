@@ -49,10 +49,10 @@ def train(
             losses = sum(loss for loss in loss_dict.values())
 
             optimizer.zero_grad()
-            losses.backward()
+            losses.backward()  # noqa
             optimizer.step()
 
-            epoch_loss += losses.item()
+            epoch_loss += losses.item()  # noqa
             process.next(loss=f"{losses:.4f}", total=f"{epoch_loss:.4f}")
             # writer.add_scalar("Loss.Detail", losses)
         epoch_loss /= count

@@ -1,6 +1,6 @@
 from torch import nn
-from torchvision.models.resnet import ResNet, Bottleneck
-from torchvision.models._utils import IntermediateLayerGetter
+from torchvision.models.resnet import ResNet, Bottleneck  # noqa
+from torchvision.models._utils import IntermediateLayerGetter  # noqa
 from torchvision.models.detection.anchor_utils import AnchorGenerator
 from torchvision.models.detection.rpn import RegionProposalNetwork, RPNHead
 from torchvision.ops.feature_pyramid_network import LastLevelMaxPool, FeaturePyramidNetwork

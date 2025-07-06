@@ -6,7 +6,7 @@ import numpy as np
 from utils import GPU
 from PIL import Image
 from typing import Literal
-import torchvision.transforms.functional as F
+import torchvision.transforms.functional as F  # noqa
 from torch.utils.data import Dataset as TorchDataset, DataLoader
 from torchvision.transforms.transforms import RandomCrop, Resize
 
@@ -344,8 +344,14 @@ def calc_mean_std():
     mean.div_(size)
     std.div_(size)
     """
-    mean = [0.039798092, 0.23215543, 0.21487042, 0.12491968, 0.23842652, 0.061436515, 0.024498232, 0.2339738, 0.014193709]
-    std = [0.032900818, 0.1462142, 0.15836369, 0.09872178, 0.14610584, 0.056200337, 0.015856693, 0.14639099, 0.008545931]
+    mean = [
+        0.039798092, 0.23215543, 0.21487042, 0.12491968,
+        0.23842652, 0.061436515, 0.024498232, 0.2339738, 0.014193709
+    ]
+    std = [
+        0.032900818, 0.1462142, 0.15836369, 0.09872178,
+        0.14610584, 0.056200337, 0.015856693, 0.14639099, 0.008545931
+    ]
     """
     print(f"计算完成，耗时：{time.time() - start:.2f}秒，计算结果：")
     print("image_mean =", list(mean.cpu().detach().numpy()))

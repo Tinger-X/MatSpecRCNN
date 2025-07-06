@@ -46,7 +46,7 @@ def infer(model, dataloader: DataLoader, image_handler: callable, has_material: 
             rgb_images = image_handler(images)
             outputs = model.inference(images)
 
-            for i, (rgb_image, output, target) in enumerate(zip(rgb_images, outputs, targets)):
+            for rgb_image, output, target in zip(rgb_images, outputs, targets):
                 raw_rgb = rgb_image.copy()
                 count = len(output["labels"])
                 if count == 0:
@@ -61,11 +61,11 @@ def infer(model, dataloader: DataLoader, image_handler: callable, has_material: 
                     )
                 else:
                     # 绘制预测结果
-                    for i in range(count):
-                        box = output["boxes"][i]
-                        label = output["labels"][i].item()
-                        score = output["scores"][i]
-                        mask = output["masks"][i]
+                    for j in range(count):
+                        box = output["boxes"][j]
+                        label = output["labels"][j].item()
+                        score = output["scores"][j]
+                        mask = output["masks"][j]
 
                         kind = classes[label]
                         box = box.cpu().numpy().astype(int)
@@ -80,8 +80,8 @@ def infer(model, dataloader: DataLoader, image_handler: callable, has_material: 
                             1
                         )
                         if has_material:
-                            mater = materials[output["materials"][i]]
-                            m_score = output["material_scores"][i]
+                            mater = materials[output["materials"][j]]
+                            m_score = output["material_scores"][j]
                             cv2.putText(
                                 rgb_image,
                                 f"{mater} {m_score:.4f}",

@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-import torch.nn.functional as F
+import torch.nn.functional as F  # noqa
 from torchvision.ops import roi_align, MultiScaleRoIAlign
 
 __all__ = ["MaterialRoIPool", "MaterialHead", "MaterialPredictor"]

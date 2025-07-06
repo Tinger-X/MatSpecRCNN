@@ -3,11 +3,10 @@ import math
 import torch
 from torch.utils.tensorboard import SummaryWriter
 
-__all__ = ["GPU", "CPU", "device", "Processor", "Normalize", "Writer", "torch_assert"]
+__all__ = ["GPU", "CPU", "Processor", "Normalize", "Writer", "torch_assert"]
 
 GPU = torch.device("cuda")
 CPU = torch.device("cpu")
-device = GPU
 
 
 class Processor:

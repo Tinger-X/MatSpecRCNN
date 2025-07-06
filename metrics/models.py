@@ -79,7 +79,7 @@ def show():
     if len(sys.argv) != 2:
         return print(f"usage: python models.py <name: {' | '.join(__all__)}>")
     if sys.argv[1] not in __all__:
-        return print(f"got an unkown model name, expect: {__all__}")
+        return print(f"got an unknown model name, expect: {__all__}")
     model_cls = eval(sys.argv[1])
     model_args = (7, 5)
     if sys.argv[1] == "MaskRCNN_ResNet50":
