@@ -2,7 +2,7 @@
 usage:
 ```bash
     # run in NVIDIA Tesla T4
-    # results saved in `../logs/metrics-result.ms`
+    # results saved in `../logs/metrics-result.md`
     export PYTHONPATH=/path/to/MatSpecRCNN
     cd /path/to/MatSpecRCNN/metrics
     # MaskRCNN
