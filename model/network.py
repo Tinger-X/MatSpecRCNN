@@ -15,14 +15,14 @@ class MatSpecRCNN(nn.Module):
     Material + Spectral + R-CNN
     """
 
-    def __init__(self, num_classes: int, num_materials: int):
+    def __init__(self, num_classes: int, num_materials: int, channels: int = 9):
         super(MatSpecRCNN, self).__init__()
 
         backbone_trainable_layers = 6
         fpn_out_channels = 256
         returned_layers = [1, 2, 3, 4]
         return_layers = {f"layer{k}": str(v) for v, k in enumerate(returned_layers)}
-        resnet50 = modified_resnet50()
+        resnet50 = modified_resnet50(channels)
 
         self.normalizer = Normalizer()
         self.backbone = build_backbone(resnet50, backbone_trainable_layers, return_layers)

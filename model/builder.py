@@ -8,10 +8,10 @@ from torchvision.ops.feature_pyramid_network import LastLevelMaxPool, FeaturePyr
 __all__ = ["modified_resnet50", "build_backbone", "build_fpn", "build_rpn"]
 
 
-def modified_resnet50() -> ResNet:
+def modified_resnet50(channels: int) -> ResNet:
     resnet = ResNet(Bottleneck, [3, 4, 6, 3])
     resnet.conv1 = nn.Conv2d(
-        9, 64, kernel_size=7,
+        channels, 64, kernel_size=7,
         stride=2, padding=3, bias=False
     )
 
