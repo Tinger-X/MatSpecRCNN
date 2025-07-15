@@ -4,13 +4,12 @@
 
 This paper proposes a novel multispectral object detection and material recognition network, _MatSpecRCNN_,
 which is based on _Mask R-CNN_ and customized for the characteristics of multispectral images. The network
-backbone uses 9-channel multispectral image as input, and accepts spectral attention and spatial attention
+backbone uses nine-channel multispectral image as input, and adopts spectral attention and spatial attention
 mechanism during the feature extraction stage to enhance the representation of spectral and spatial features.
 Based on the detection and segmentation branches, we designed a _material recognition branch_ that accurately
-classifies target materials by using a material-roi(Region of Interest)-pool, a material-head and a
-material-predictor within the bounding-box prediction results. Experimental results show that our network
-achieves high-precision in object detection and material recognition on custom multispectral datasets,
-providing an effective tool for intelligent analysis of multispectral images.
+classifies target materials by using roi-pool, head and predictor within the bounding-box prediction results.
+Experimental results show that our network achieves high-precision in object detection and material recognition
+on custom multispectral datasets, providing an effective tool for intelligent analysis of multispectral images.
 
 # Images
 
