@@ -1,3 +1,16 @@
+# Events
+
++ 2025-07-15: first submission
++ 2025-07-15: pre-review
++ 2025-07-15: first rework
++ 2025-07-15: second submission
++ 2025-07-15: expert review
++ 2025-07-16: confirmed acceptance
++ 2025-09-03: second rework
++ 2025-09-04: final submission
++ 2025-12-22: published (🌹congratulations!!!)
++ 2026-01-23: EI index updated (🌹[10.1145/3773365.3773437](https://doi.org/10.1145/3773365.3773437))
+
 # MatSpecRCNN
 
 **Material Spectral RCNN**: A Multispectral Mask R-CNN for Joint Object Detection and Material Recognition.
