@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader
 
 import utils
 import models
-from datamaker import Datamaker
+from datamaker import RecoMaker
 
 
 def infer(model, dataloader: DataLoader, image_handler: callable, has_material: bool):
@@ -143,7 +143,7 @@ def main():
         model_cls = models.MatSpecRCNN_540
         data_type = "540"
         image_handler = image_handler_540
-    datamaker = Datamaker(
+    datamaker = RecoMaker(
         "../images/bg", "../images/tar", data_type=data_type,  # noqa
         bg_shape=(384, 512), tar_range=(0.4, 0.8)
     )

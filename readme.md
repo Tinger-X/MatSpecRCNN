@@ -26,27 +26,27 @@ on custom multispectral datasets, providing an effective tool for intelligent an
 
 # Images
 
-![Figure 1](images/readme/overall.png)
+![Figure 1](data/readme/overall.png)
 
 Figure 1. The overall framework of MatSpecRCNN. Compared to Mask R-CNN, MatSpecRCNN replaces the
 _Transform_ with a fixed _Normalizer_, modifies the _Backbone_, and replaces the _Keypoint Branch_
 with a new _Material Branch_.
 
-![Figure 2](images/readme/material-head.png)
+![Figure 2](data/readme/material-head.png)
 
 Figure 2. The structure of Material Head. The processing flow can be divided into three stages:
 _Spatial Attention_, _Spectral Attention_, and _Feature Projection_. By implementing a _Reduce_
 prior to the _Multilayer Perceptron (MLP)_ projection, we achieve a 97% reduction in parameters
 while maintaining representational capacity.
 
-![Figure 3](images/readme/process.png)
+![Figure 3](data/readme/process.png)
 
 Figure 3. Combined illustration of our dataset workflow: (a) Imaging System Hardware，RGB camera
 captures horizontally flipped image; (b) Annotation Example, an “Air Write” with many “Delete”;
 (c) Affine Example, left shows the RGB image keypoints, right shows the corresponding in grayscale,
 lines connect the matched keypoints.
 
-![Figure 4](images/readme/example.png)
+![Figure 4](data/readme/example.png)
 
 Figure 4. A classic example of MatSpecRCNN. Left shows the RGB image of input multispectral data,
 right shows the predictions of bounding box, object region, object classes with confidence and object
@@ -86,5 +86,7 @@ python -u main.py train --epoch 20 --batch 8 --load warm-up --save self-full > l
 # show model
 python main.py show > logs/self-full/model.txt
 # inference (run in RTX 3060)
-python -u main.py infer --epoch 20 --load self-full --batch 4
+python -u main.py infer --load self-full --batch 4
+# inference (run in RTX 3060)
+python -u main.py track --load self-full --batch 1 --len 200
 ```
